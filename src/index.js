@@ -2,43 +2,44 @@ import React from "react";
 import ReactDOM from "react-dom";
 import './index.css'
 
+const firstBook = {
+    img: 'https://images-na.ssl-images-amazon.com/images/I/8144Vic9C5L._AC_UL127_SR127,127_.jpg',
+    title: 'I Love You to the Moon and Back',
+    author: 'Amelia Hepworth'
+};
+
+const secondBook = {
+    img: 'https://images-na.ssl-images-amazon.com/images/I/81PMOtoT7zL._AC_UL127_SR127,127_.jpg',
+    title: 'Fairy Tale',
+    author: 'Fairy Tale'
+};
+
+
 function BookList() {
 return (
     <section className="booklist">
-        <Book/>
-        <Book/>
-        <Book/>
-        <Book/>
-        <Book/>
-        <Book/>
+         <Book
+                img={firstBook.img}
+                title={firstBook.title}
+                author={firstBook.author}
+            />
+            <Book
+                img={secondBook.img}
+                title={secondBook.title}
+                author={secondBook.author}
+            />
     </section>
 );
 };
 
-const Book = () => {
+const Book = (props) => {
     return (
         <article className="book">
-            <Image/>
-            <Title/>
-            <Author/>
+           <img src={props.img} alt="" />
+           <h1>{props.title}</h1>
+           <h4>{props.author}</h4>
         </article>
     );
-};
-
-const Image = () => {
-    return (<img 
-    src="https://images-na.ssl-images-amazon.com/images/I/8144Vic9C5L._AC_UL127_SR127,127_.jpg"
-    alt=""
-    />
-)
-};
-
-const Title = () => {
-    return <h1>I Love You to the Moon and Back</h1>
-};
-
-const Author = () => {
-    return <p>Amelia Hepworth</p>
 };
 
 ReactDOM.render(<BookList/>, document.getElementById('root'));
